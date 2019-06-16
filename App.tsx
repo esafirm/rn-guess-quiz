@@ -18,6 +18,8 @@ const AppNavigator = createStackNavigator({
   Main: MainScreen,
   QuizList: QuizListScreen,
   Quiz: QuizScreen
-})
+}, {
+    headerMode: 'none'
+  })
 
 export default createAppContainer(AppNavigator)

@@ -11,11 +11,12 @@
 import React, { Component } from 'react';
 import QuizScreen from './src/screens/QuizScreen';
 import QuizListScreen from './src/screens/list/QuizListScreen';
+import MainScreen from './src/screens/main/MainScreen';
 
 export default class App extends Component<{}> {
   render() {
     return (
-      <QuizListScreen />
+      <MainScreen />
     );
   }
 }

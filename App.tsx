@@ -8,15 +8,16 @@
  * @format
  */
 
-import React, { Component } from 'react';
-import QuizScreen from './src/screens/QuizScreen';
-import QuizListScreen from './src/screens/list/QuizListScreen';
+import React from 'react';
 import MainScreen from './src/screens/main/MainScreen';
+import { createStackNavigator, createAppContainer } from 'react-navigation'
+import QuizListScreen from './src/screens/list/QuizListScreen';
+import QuizScreen from './src/screens/QuizScreen';
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <MainScreen />
-    );
-  }
-}
+const AppNavigator = createStackNavigator({
+  Main: MainScreen,
+  QuizList: QuizListScreen,
+  Quiz: QuizScreen
+})
+
+export default createAppContainer(AppNavigator)

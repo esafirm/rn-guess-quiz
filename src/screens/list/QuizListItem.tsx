@@ -4,13 +4,17 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 //@ts-ignore
 import AwesomeButton from 'react-native-really-awesome-button/src/themes/blue'
 
-class QuizListItem extends React.Component<{}> {
+type Props = {
+    onNavigate: () => void
+}
+
+class QuizListItem extends React.Component<Props> {
 
     renderFirsRow() {
         return (
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={{ fontSize: 20, fontWeight: "600" }}>Level 1</Text>
-                <AwesomeButton height={35} width={100}>Start</AwesomeButton>
+                <AwesomeButton height={35} width={100} onPress={this.props.onNavigate}>Start</AwesomeButton>
             </View>
         )
     }

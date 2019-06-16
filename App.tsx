@@ -10,11 +10,12 @@
 
 import React, { Component } from 'react';
 import QuizScreen from './src/screens/QuizScreen';
+import QuizListScreen from './src/screens/list/QuizListScreen';
 
 export default class App extends Component<{}> {
   render() {
     return (
-      <QuizScreen />
+      <QuizListScreen />
     );
   }
 }

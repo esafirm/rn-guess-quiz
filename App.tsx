@@ -9,10 +9,15 @@
  */
 
 import React from 'react';
-import MainScreen from './src/screens/main/MainScreen';
+import { Provider } from 'mobx-react'
 import { createStackNavigator, createAppContainer } from 'react-navigation'
+
+import MainScreen from './src/screens/main/MainScreen';
 import QuizListScreen from './src/screens/list/QuizListScreen';
 import QuizScreen from './src/screens/quiz/QuizScreen';
+
+import QuizStore from './src/stores/QuizStore'
+
 
 const AppNavigator = createStackNavigator({
   Main: MainScreen,
@@ -21,5 +26,17 @@ const AppNavigator = createStackNavigator({
 }, {
     headerMode: 'none'
   })
+const AppContainer = createAppContainer(AppNavigator)
 
-export default createAppContainer(AppNavigator)
+const stores = {
+  quiz: new QuizStore()
+}
+
+const App = () => (
+  <Provider {...stores}>
+    <AppContainer />
+  </Provider>
+)
+
+
+export default App

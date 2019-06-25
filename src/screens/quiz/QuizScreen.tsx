@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import QuizChoice from '../components/QuizChoice'
-import Toolbar from '../components/Toolbar';
-import QuizQuestion from '../components/QuizQuestion';
+import QuizChoice from '../../components/QuizChoice'
+import Toolbar from '../../components/Toolbar';
+import QuizQuestion from '../../components/QuizQuestion';
 
 const questions = [
     {

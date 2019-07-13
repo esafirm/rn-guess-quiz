@@ -3,9 +3,11 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 
 //@ts-ignore
 import AwesomeButton from 'react-native-really-awesome-button/src/themes/blue'
+import { Level } from '../../stores/LevelStore';
 
 type Props = {
     onNavigate: () => void
+    level: Level
 }
 
 class QuizListItem extends React.Component<Props> {
@@ -13,7 +15,7 @@ class QuizListItem extends React.Component<Props> {
     renderFirsRow() {
         return (
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{ fontSize: 20, fontWeight: "600" }}>Level 1</Text>
+                <Text style={{ fontSize: 20, fontWeight: "600" }}>{this.props.level.name}</Text>
                 <AwesomeButton height={35} width={100} onPress={this.props.onNavigate}>Start</AwesomeButton>
             </View>
         )
@@ -22,7 +24,7 @@ class QuizListItem extends React.Component<Props> {
     renderSecondRow() {
         return (
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text>Items: 15</Text>
+                <Text>Items: {this.props.level.questionCount}</Text>
                 <Text>15 Items Left</Text>
             </View>
         )

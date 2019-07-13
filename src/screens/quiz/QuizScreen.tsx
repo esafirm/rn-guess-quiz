@@ -1,35 +1,25 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { NavigationScreenProps } from 'react-navigation';
+
 import QuizChoice from '../../components/QuizChoice'
 import Toolbar from '../../components/Toolbar';
 import QuizQuestion from '../../components/QuizQuestion';
+import { Quiz } from '../../stores/LevelStore';
 
-const questions = [
-    {
-        id: 1,
-        name: 'Singa'
-    },
-    {
-        id: 2,
-        name: 'Gajah'
-    },
-    {
-        id: 3,
-        name: 'Singa'
-    },
-    {
-        id: 4,
-        name: 'Gajah'
-    }
-]
+interface QuizScreenProps extends NavigationScreenProps { }
 
-class QuizScreen extends React.Component<{}> {
+class QuizScreen extends React.Component<QuizScreenProps> {
     render() {
+        console.log('param', this.props.navigation.state)
+        const questions = this.props.navigation.getParam('questions') as Array<Quiz>
+
+        console.log('questions', questions)
         return (
             <View style={{ flex: 1 }}>
                 <Toolbar />
                 <QuizQuestion />
-                <QuizChoice questions={questions} />
+                <QuizChoice questions={questions[0]} />
             </View>
         )
     }

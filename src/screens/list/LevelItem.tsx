@@ -3,20 +3,24 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 
 //@ts-ignore
 import AwesomeButton from 'react-native-really-awesome-button/src/themes/blue'
-import { Level } from '../../stores/LevelStore';
+import { Level, Quiz } from '../../stores/LevelStore';
 
 type Props = {
-    onNavigate: () => void
+    onNavigate: (question: Array<Quiz>) => void
     level: Level
 }
 
 class QuizListItem extends React.Component<Props> {
 
+    navigate = () => {
+        this.props.onNavigate(this.props.level.questions)
+    }
+
     renderFirsRow() {
         return (
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={{ fontSize: 20, fontWeight: "600" }}>{this.props.level.name}</Text>
-                <AwesomeButton height={35} width={100} onPress={this.props.onNavigate}>Start</AwesomeButton>
+                <AwesomeButton height={35} width={100} onPress={this.navigate}>Start</AwesomeButton>
             </View>
         )
     }

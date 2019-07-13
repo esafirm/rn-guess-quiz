@@ -3,12 +3,10 @@ import { StyleSheet, View, Button } from 'react-native'
 
 //@ts-ignore
 import AwesomeButton from "react-native-really-awesome-button/src/themes/blue";
+import { Quiz } from '../stores/LevelStore';
 
 type Props = {
-    questions: Array<{
-        id: number,
-        name: string
-    }>
+    questions: Quiz
 }
 
 class QuizChoice extends React.Component<Props> {
@@ -16,8 +14,13 @@ class QuizChoice extends React.Component<Props> {
         const { questions } = this.props
         return (
             <View style={styles.container}>
-                {questions.map(question => {
-                    return <AwesomeButton style={{ marginTop: 10 }} width={300} key={question.id}>{question.name}</AwesomeButton>
+                {questions.answers.map(question => {
+                    return <AwesomeButton
+                        style={{ marginTop: 10 }}
+                        width={300}
+                        key={question}>
+                        {question}
+                    </AwesomeButton>
                 })}
             </View>
         )

@@ -5,7 +5,8 @@ import { observer, inject } from 'mobx-react';
 
 import Toolbar from '../../components/Toolbar'
 import LevelItem from './LevelItem';
-import LevelStore from '../../stores/LevelStore';
+import LevelStore, { Quiz } from '../../stores/LevelStore';
+import { toJS } from 'mobx';
 
 interface LevelScreenProps extends NavigationScreenProps {
     level: LevelStore
@@ -18,7 +19,12 @@ class LevelScreen extends React.Component<LevelScreenProps> {
     }
 
     render() {
-        const onNavigate = () => this.props.navigation.navigate('Quiz')
+        const onNavigate = (questions: Array<Quiz>) => {
+            this.props.navigation.navigate('Quiz', {
+                questions: toJS(questions)
+            })
+        }
+
         return (
             <View style={{ flex: 1 }}>
                 <Toolbar />

@@ -16,21 +16,19 @@ import MainScreen from './src/screens/main/MainScreen';
 import QuizListScreen from './src/screens/list/LevelScreen';
 import QuizScreen from './src/screens/quiz/QuizScreen';
 
-import QuizStore from './src/stores/QuizStore'
 import LevelStore from './src/stores/LevelStore';
 
 
 const AppNavigator = createStackNavigator({
-  Main: MainScreen,
   QuizList: QuizListScreen,
-  Quiz: QuizScreen
+  Quiz: QuizScreen,
+  Main: MainScreen,
 }, {
     headerMode: 'none'
   })
 const AppContainer = createAppContainer(AppNavigator)
 
 const stores = {
-  quiz: new QuizStore(),
   level: new LevelStore()
 }
 
